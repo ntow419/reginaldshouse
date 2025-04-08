@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DREAM VILLA</title>
+  <script src="script/aframe.min.js"></script>
+  <script src="script/ada-water.js"></script>
+</head>
+
+<body>
+  <a-scene>
+
+    <a-asets>
+      <img src="Textures/nature-background-white-clouds-blue-sky_180633-3915.avif" id="Csky">
+      <img src="Textures/R.jpeg" id="Ground">
+      <img src="Textures/OIP.jpeg" id="Grass">
+      <img id="POOL" src="Textures/water-map.jpg">
+      <a-asets-items id="house" src="3D Models/house 1/scene.gltf"></a-asets-items>
+      <a-asets-items id="pool" src="3D Models/Swimming Pool/scene.gltf"></a-asets-items>
+      
+      
+    </a-asets>
+    <a-sky src="#Csky"></a-sky>
+
+    <!-- House -->
+    <a-entity gltf-model="#house"  position="0 -2 0"></a-entity>
+
+    <!-- Swimming Pool -->
+    <a-entity gltf-model="#pool"  position="15 -1.2 -25" scale="0.05 0.05 0.05"></a-entity>
+
+
+    <!-- Ambient Lighting -->
+    <a-entity light="type: ambient; color: grey; intensity: 1.2;"></a-entity>
+
+    <!-- Ground -->
+    <a-plane src="#Ground" width="20" height="20" position="20 -2.8 0" rotation="-90 0 0" scale="10 10 10"  repeat="16 16"></a-plane>
+
+    <!-- Grass -->
+    <a-box src="#Grass" height="0.9" width="30" depth="16" position="1 -3 -26" scale="1.7 1.7 1.7" repeat="12 12"></a-box>
+
+
+    <!-- Roof -->
+    <a-box color="yellow" height="0.5" width="17" depth="10" position="1 4.3 -26"></a-box>
+    <a-box color="white" height="0.4" width="20" depth="10" position="1 4.7 -26"></a-box>
+
+
+
+        <a-water
+        opacity="0.6"  side="double"
+        width="20"
+        depth="70"
+        metalness="0.8"  roughness="10"  normal-map="#POOL"  repeat="1"
+        voronoi-points="30"
+        rotation="90 90 0"
+        position="17.5 -0.9 -25"
+        scale="0.5 0.5 0.5"
+       ></a-water>
+
+        
+
+             <script>
+        document.querySelector("a-water").setAttribute("animation", {
+          property: "scale",
+          from: "0.5 0.5 2.1",
+          to: "0.52 0.52 2.2",
+          dur: 5000,
+          loop: true,
+          dir: "alternate",
+          easing: "easeInOutSine",
+        });
+      </script>
+  
+
+
+
+  </a-scene>
+
+
+
+</body>
+
+</html>
